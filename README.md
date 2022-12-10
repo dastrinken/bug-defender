@@ -5,3 +5,4 @@ Contributors: \
 dastrinken - https://github.com/dastrinken \
 Rikerus - https://github.com/Rikerus \
 Juwls - https://github.com/Juwls \
+Elegist - https://github.com/elegist
