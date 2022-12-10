@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/popUpLayout"
+    style="@style/PopUp.View"
+    android:orientation="vertical"
+    android:scrollIndicators="right">
+
+    <ImageButton
+        android:id="@+id/closeBtn"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:backgroundTint="@color/middle_brown"
+        android:contentDescription="@string/close_button"
+        app:layout_constraintBottom_toTopOf="@id/divider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:layout_marginBottom="2dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toTopOf="@id/popupTitleText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/closeBtn" />
+
+    <TextView
+        android:id="@+id/popupTitleText"
+        style="@style/Heading.TextView"
+        android:textAlignment="gravity"
+        app:layout_constraintBottom_toTopOf="@+id/popupText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider" />
+
+    <TextView
+        android:id="@+id/popupText"
+        style="@style/Text.TextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/popupFragmentContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/popupTitleText" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/popupFragmentContainer"
+        android:name="de.mow2.towerdefense.controller.fragments.SettingsFragment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/menuDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/popupText"
+        tools:layout="@android:layout/preference_category" />
+
+    <View
+        android:id="@+id/menuDivider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/dark_brown"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/tutorialBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/popupFragmentContainer" />
+
+    <Button
+        android:id="@+id/tutorialBtn"
+        style="@style/Popup.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/goOnTutorial"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/menuDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/menuDivider" />
+
+    <Button
+        android:id="@+id/pauseGameBtn"
+        style="@style/Popup.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/pauseGame"
+        android:onClick="pauseGame"
+        android:text="@string/pauseGame"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tutorialBtn" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

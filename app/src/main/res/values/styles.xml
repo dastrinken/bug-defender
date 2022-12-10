@@ -1,0 +1,100 @@
+<resources>
+
+    <style name="Widget.Theme.TowerDefense.ActionBar.Fullscreen" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/black_overlay</item>
+    </style>
+
+    <style name="Button.Main" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/defaultbtn_states</item>
+        <item name="android:fontFamily">@font/medievalsharpbold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:padding">24dp</item>
+        <item name="android:layout_marginLeft">40dp</item>
+        <item name="android:layout_marginRight">40dp</item>
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:elevation">4dp</item>
+        <item name="android:letterSpacing">0.1</item>
+        <item name="android:soundEffectsEnabled">true</item>
+    </style>
+
+    <style name="ImageButton.Main" parent="Widget.AppCompat.ImageButton">
+        <item name="android:layout_width">58dp</item>
+        <item name="android:layout_height">58dp</item>
+        <item name="android:layout_marginBottom">35dp</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:padding">15dp</item>
+    </style>
+
+    <style name="InGameButton.Main" parent="Widget.AppCompat.Button">
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:fontFamily">@font/medievalsharpbold</item>
+        <item name="android:background">@drawable/defaultbtn_states</item>
+        <item name="android:layout_width">58dp</item>
+        <item name="android:layout_height">58dp</item>
+    </style>
+
+    <style name="MenuButton.Button" parent="Widget.AppCompat.ImageButton">
+        <item name="android:contentDescription">@string/menuBtn</item>
+    </style>
+
+    <style name="PopUp.View" parent="">
+        <item name="android:backgroundTint">@color/middle_brown</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">3dp</item>
+        <item name="android:paddingBottom">30dp</item>
+    </style>
+
+    <style name="Popup.Button" parent="Widget.AppCompat.Button">
+        <item name="android:backgroundTint">@color/dark_brown</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/medievalsharpbold</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingBottom">20dp</item>
+        <item name="android:paddingTop">20dp</item>
+        <item name="android:paddingRight">50dp</item>
+        <item name="android:paddingLeft">50dp</item>
+    </style>
+
+    <style name="CheckBox.Button" parent="Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:buttonTint">@color/white</item>
+    </style>
+
+    <style name="Preference.Dialog" parent="Theme.MaterialComponents.Dialog">
+        <item name="android:colorControlActivated">@color/white</item>
+        <item name="android:colorControlNormal">@color/white</item>
+        <item name="android:color">@color/white</item>
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorAccent">@color/white</item>
+        <item name="android:background">@color/middle_brown</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+    </style>
+
+    <style name="Text.TextView" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_marginStart">24dp</item>
+        <item name="android:layout_marginEnd">24dp</item>
+    </style>
+
+    <style name="Heading.TextView" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/medievalsharpbold</item>
+        <item name="android:layout_marginStart">24dp</item>
+        <item name="android:layout_marginEnd">24dp</item>
+        <item name="android:layout_marginBottom">20dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+</resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="graphics_quality">
+        <item>@string/low</item>
+        <item>@string/avg</item>
+        <item>@string/high</item>
+    </string-array>
+</resources>

@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/wrapAll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_brown"
+    android:keepScreenOn="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topGUI"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        app:layout_constraintBottom_toTopOf="@+id/gameContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/topGuiContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp"
+            android:elevation="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/healthBarContainer"
+                android:layout_width="0dp"
+                android:layout_height="78dp"
+                android:elevation="2dp"
+                app:layout_constraintEnd_toStartOf="@+id/progressBarContainer"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/healthText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:elevation="6dp"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="@+id/healthProgressBar"
+                    app:layout_constraintEnd_toEndOf="@+id/healthProgressBar"
+                    app:layout_constraintStart_toStartOf="@+id/healthProgressBar"
+                    app:layout_constraintTop_toTopOf="@+id/healthProgressBar" />
+
+                <ProgressBar
+                    android:id="@+id/healthProgressBar"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="4dp"
+                    android:elevation="3dp"
+                    android:progressDrawable="@drawable/healthbar"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/healthBallImg"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:contentDescription="@string/health_ball_image"
+                    android:elevation="6dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/healthball" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/rightElementsWrapper"
+                android:layout_width="152dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:elevation="2dp"
+                android:paddingBottom="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/menuBtn"
+                app:layout_constraintTop_toBottomOf="@+id/progressBarContainer">
+
+                <TextView
+                    android:id="@+id/waveValue"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="viewEnd"
+                    android:textColor="#BCAAA4"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/waveIcon"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/waveIcon"
+                    android:layout_width="70dp"
+                    android:layout_height="0dp"
+                    android:contentDescription="@string/timer_image"
+                    android:elevation="6dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/waveValue"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/wave_display_icon" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <Button
+                android:id="@+id/menuBtn"
+                style="@style/InGameButton.Main"
+                android:layout_width="170dp"
+                android:layout_height="70dp"
+                android:background="@drawable/defaultbtn_states"
+                android:onClick="popUpMenu"
+                android:text="@string/menuBtn"
+                android:textSize="30sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/healthBarContainer" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/progressBarContainer"
+                android:layout_width="0dp"
+                android:layout_height="78dp"
+                android:background="#00FFFFFF"
+                android:elevation="2dp"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/healthBarContainer"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ProgressBar
+                    android:id="@+id/waveProgressBar"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="8dp"
+                    android:elevation="6dp"
+                    android:progressDrawable="@drawable/wavebar"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/waveText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:elevation="6dp"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="@+id/waveProgressBar"
+                    app:layout_constraintEnd_toEndOf="@+id/waveProgressBar"
+                    app:layout_constraintStart_toStartOf="@+id/waveProgressBar"
+                    app:layout_constraintTop_toTopOf="@+id/waveProgressBar" />
+
+                <ImageView
+                    android:id="@+id/progressBallImg"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:contentDescription="@string/progress_ball_image"
+                    android:elevation="6dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/progressball" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/leftElementsWrapper"
+                android:layout_width="151dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginBottom="2dp"
+                android:elevation="2dp"
+                android:paddingBottom="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/menuBtn"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/healthBarContainer">
+
+                <ImageView
+                    android:id="@+id/coinImg"
+                    android:layout_width="70dp"
+                    android:layout_height="0dp"
+                    android:contentDescription="@string/coins"
+                    android:elevation="6dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/coinsText"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/coins" />
+
+                <TextView
+                    android:id="@+id/coinsText"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="viewStart"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/coinImg"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/topGuiBg"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:id="@+id/gameContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="64dp"
+        android:contentDescription="@string/app_name"
+        android:overScrollMode="never"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topGUI">
+
+        <LinearLayout
+            android:id="@+id/gameViewContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        </LinearLayout>
+    </ScrollView>
+
+    <HorizontalScrollView
+        android:id="@+id/buildMenuWrapper"
+        android:layout_width="wrap_content"
+        android:layout_height="138dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/bottomGUI"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:id="@+id/buildMenuContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/toggle_menu"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingTop="5dp"></LinearLayout>
+    </HorizontalScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottomGUI"
+        android:layout_width="0dp"
+        android:layout_height="126dp"
+        android:elevation="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/bottomGuiSpacer"
+            android:layout_width="0dp"
+            android:layout_height="114dp"
+            android:elevation="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bottomGuiContainer"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="4dp"
+            android:elevation="6dp"
+            app:layout_constraintBottom_toBottomOf="@+id/bottomGuiSpacer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/deleteButton"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:background="@drawable/defaultbtn_states"
+                android:contentDescription="@string/delete_tower_button"
+                android:elevation="5dp"
+                android:padding="4dp"
+                android:scaleType="centerInside"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/buildButton"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/destroy_tower_btn"
+                tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
+
+            <ImageButton
+                android:id="@+id/buildButton"
+                android:layout_width="96dp"
+                android:layout_height="0dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/defaultbtn_states"
+                android:contentDescription="@string/build_tower_button"
+                android:elevation="5dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:scaleType="centerInside"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/upgradeButton"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/deleteButton"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/tower_single_imagebtn"
+                tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck"
+                tools:srcCompat="@drawable/tower_single_imagebtn" />
+
+            <ImageButton
+                android:id="@+id/upgradeButton"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:background="@drawable/defaultbtn_states"
+                android:contentDescription="@string/upgrade_tower_button"
+                android:elevation="5dp"
+                android:padding="4dp"
+                android:scaleType="centerInside"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/buildButton"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/upgrade"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

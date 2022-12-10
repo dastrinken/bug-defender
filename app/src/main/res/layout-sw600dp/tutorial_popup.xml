@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tutPopUp"
+    style="@style/PopUp.View"
+    android:layout_height="wrap_content">
+
+    <ImageButton
+        android:id="@+id/closeTutBtn"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:backgroundTint="@color/middle_brown"
+        android:contentDescription="@string/close_button"
+        app:layout_constraintBottom_toTopOf="@id/tutDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+
+    <View
+        android:id="@+id/tutDivider"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:layout_marginBottom="2dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toTopOf="@+id/tutTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/closeTutBtn" />
+
+    <TextView
+        android:id="@+id/tutTitle"
+        style="@style/Heading.TextView"
+        android:layout_marginStart="30dp"
+        android:text="@string/tutorialTitel"
+        android:textAlignment="gravity"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/tutText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tutDivider" />
+
+    <TextView
+        android:id="@+id/tutText"
+        style="@style/Text.TextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="15dp"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@id/tutDivider2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tutTitle" />
+
+    <View
+        android:id="@+id/tutDivider2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@id/goOnBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tutText" />
+
+    <Button
+        android:id="@+id/goOnBtn"
+        style="@style/Popup.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/goOnTutorial"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tutDivider2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

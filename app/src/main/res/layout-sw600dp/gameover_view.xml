@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/gameoverView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_brown">
+
+    <ImageView
+        android:id="@+id/gameOverIV"
+        android:layout_width="400dp"
+        android:layout_height="278dp"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintBottom_toTopOf="@+id/valueDisplay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/tower_collapse_animation" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/valueDisplay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/backToMainBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gameOverIV">
+
+        <TextView
+            android:id="@+id/gameOverTV"
+            style="@style/Heading.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:text="@string/lostText"
+            android:textAlignment="center"
+            android:textSize="60sp"
+            app:layout_constraintBottom_toTopOf="@+id/timeTV"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/timeTV"
+            style="@style/Heading.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:textAlignment="center"
+            android:textSize="34sp"
+            app:layout_constraintBottom_toTopOf="@+id/waveReached"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/gameOverTV" />
+
+        <TextView
+            android:id="@+id/waveReached"
+            style="@style/Heading.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:textAlignment="center"
+            android:textSize="34sp"
+            app:layout_constraintBottom_toTopOf="@+id/enemyValue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/timeTV" />
+
+        <TextView
+            android:id="@+id/enemyValue"
+            style="@style/Heading.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="34sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/waveReached" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/backToMainBtn"
+        style="@style/Button.Main"
+        android:layout_width="476dp"
+        android:layout_height="102dp"
+        android:background="@drawable/defaultbtn_states"
+        android:onClick="leaveGame"
+        android:text="@string/back"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/valueDisplay" />
+</androidx.constraintlayout.widget.ConstraintLayout>

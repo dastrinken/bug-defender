@@ -1,0 +1,28 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Theme.TowerDefense" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/dark_brown</item>
+        <item name="colorPrimaryVariant">@color/light_brown</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/dark_green</item>
+        <item name="colorSecondaryVariant">@color/light_green</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="ThemeOverlay.TowerDefense.FullscreenContainer" parent="">
+        <item name="fullscreenBackgroundColor">@color/dark_green</item>
+        <item name="fullscreenTextColor">@color/white</item>
+    </style>
+
+    <style name="Theme.AppCompat.NoActionBar.Main" parent="Theme.AppCompat.NoActionBar">
+        <item name="alertDialogTheme">@style/Preference.Dialog</item>
+        <item name="checkboxStyle">@style/CheckBox.Button</item>
+        <item name="checkBoxPreferenceStyle">@style/CheckBox.Text</item>
+        <item name="dialogPreferenceStyle">@style/ListPref.Text</item>
+    </style>
+</resources>

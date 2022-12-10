@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <bool name="musicCheckbox">true</bool>
+    <bool name="soundCheckbox">true</bool>
+    <bool name="tutorialCheckbox">true</bool>
+    <string name="qualitySetting" translatable="false">Low</string>
+</resources>
