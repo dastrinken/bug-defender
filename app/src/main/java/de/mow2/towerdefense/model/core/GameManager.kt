@@ -78,7 +78,6 @@ class GameManager(private val controller: GameController) {
 
     private val waveSpawner = WaveSpawner(controller)
     fun initLevel(level: Int, newGame: Boolean = false) {
-        //gameLevel = 50
         //set the wave
         waveSpawner.initWave(level)
         when (level) {
@@ -313,6 +312,11 @@ class GameManager(private val controller: GameController) {
         var gameLevel = 0 // current level/wave
         var enemiesKilled: Int = 0 //total enemies spawned
         var enemiesAlive: Int = 0 //enemies currently on the PlayGround
+        //spawn behaviour
+        var enemyIndexStart = 0
+        var enemyIndexEnd = 0
+        var enemyIndexOffset = 0
+        var spawnRate = 10f
 
         //game objects
         const val maxTowerLevel = 2
@@ -335,6 +339,9 @@ class GameManager(private val controller: GameController) {
             killCounter = 0
             lastTower = null
             gameLevel = 0
+            enemyIndexStart = 0
+            enemyIndexEnd = 0
+            enemyIndexOffset = 0
             enemiesKilled = 0
             enemiesAlive = 0
         }

@@ -20,7 +20,7 @@ class BuildUpgradeMenu(private val controller: GameController) {
             TowerTypes.SINGLE -> 100
             TowerTypes.SLOW -> 200
             TowerTypes.AOE -> 500
-            TowerTypes.MAGIC -> 1000
+            TowerTypes.MAGIC -> 5000
         }
         return cost * (level + 1)
     }

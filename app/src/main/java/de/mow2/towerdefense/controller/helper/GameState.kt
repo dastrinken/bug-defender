@@ -57,6 +57,10 @@ class GameState(val context: Context) {
             val objectOut = ObjectOutputStream(output)
             //save all needed data
             objectOut.writeObject(GameManager.gameLevel)
+            objectOut.writeObject(GameManager.enemyIndexStart)
+            objectOut.writeObject(GameManager.enemyIndexEnd)
+            objectOut.writeObject(GameManager.enemyIndexOffset)
+            objectOut.writeObject(GameManager.spawnRate)
             objectOut.writeObject(GameManager.enemiesKilled)
             objectOut.writeObject(GameManager.livesAmnt)
             objectOut.writeObject(GameManager.livesMax)
@@ -91,6 +95,10 @@ class GameState(val context: Context) {
             val input = ObjectInputStream(FileInputStream(file))
             //read all saved variables and objects
             val level = input.readObject() as Int
+            val enemyIndexStart = input.readObject() as Int
+            val enemyIndexEnd = input.readObject() as Int
+            val enemyIndexOffset = input.readObject() as Int
+            val spawnRate = input.readObject() as Float
             val enemiesKilled = input.readObject() as Int
             val lives = input.readObject() as Int
             val livesMax = input.readObject() as Int
@@ -107,7 +115,11 @@ class GameState(val context: Context) {
             }
             //replace GameManager variables with saved ones
             GameManager.gameLevel = level
+            GameManager.enemyIndexStart = enemyIndexStart
+            GameManager.enemyIndexEnd = enemyIndexEnd
+            GameManager.enemyIndexOffset = enemyIndexOffset
             GameManager.enemiesKilled = enemiesKilled
+            GameManager.spawnRate = spawnRate
             GameManager.livesAmnt = lives
             GameManager.livesMax = livesMax
             GameManager.coinAmnt = coins

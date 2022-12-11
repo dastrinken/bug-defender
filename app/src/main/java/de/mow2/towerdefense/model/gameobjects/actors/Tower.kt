@@ -128,9 +128,9 @@ class Tower(val squareField: SquareField, var type: TowerTypes) : Comparable<Tow
             }
             TowerTypes.MAGIC -> {
                 finalRange = baseRange + towerLevel * width
-                damage = 5 + towerLevel * 5
+                damage = 6 + towerLevel * 5
                 actionsPerMinute = baseSpeed / 4 + towerLevel * 10
-                dotDamage = 1 + towerLevel
+                dotDamage = 3 + towerLevel
                 dotInterval = (1000 - towerLevel * 200).toLong() //milliseconds
             }
         }

@@ -12,7 +12,7 @@ class WaveSpawner(val controller: GameController) {
     var enemyCount: Int = 0  //the number of enemies for this wave.
 
     //spawn rate values
-    private var baseSpawnsPerMinute = 10f
+    private var baseSpawnsPerMinute = GameManager.spawnRate
     private var maxSpawnRPM = 130 //default = 120
     private var updateCycle: Float = 0f
     private var waitUpdates: Float = 0f
@@ -23,6 +23,12 @@ class WaveSpawner(val controller: GameController) {
             //link with target updates per second to convert to updates per spawn
             updateCycle = GameLoop.targetUPS / spawnsPerSecond
         }
+
+    //spawn type calculation
+    private val enemyTypesCount = EnemyType.values().size - 1 //total amount of different enemy types without boss
+    private var regWaveStartIndex = GameManager.enemyIndexStart
+    private var regWaveEndIndex = GameManager.enemyIndexEnd
+    private var regWaveIndexOffset = GameManager.enemyIndexOffset
 
     /**
      * spawn rate cycle. Wait a specific amount of updates
@@ -51,52 +57,56 @@ class WaveSpawner(val controller: GameController) {
         }
     }
 
-    //enemy index for scaling purpose
-    var enemyIndexStart = 0
-    var enemyIndexEnd = 3
-
-    /**
-     *
-     */
     fun initWave(gameLevel: Int) {
         waveEnemyList.clear()
-        for (i in 0..gameLevel) {
-            if (baseSpawnsPerMinute <= maxSpawnRPM) {
-                baseSpawnsPerMinute *= 1.08f //default = 1.2f; increase spawn rate by 20%
-            }
+        if (baseSpawnsPerMinute <= maxSpawnRPM) {
+            baseSpawnsPerMinute *= 1.15f //spawnrate increases each level
         }
         when {
-            //starting wave
+            //first wave
             gameLevel == 0 -> {
                 waveEnemyList.add(EnemyType.values().first())
                 spawnsPerMinute = baseSpawnsPerMinute
                 enemyCount = 5
             }
-            //for each enemy type one level (except first)
-            gameLevel in 1 until EnemyType.values().size - 1 -> { //until + size-1 because SKELETONKING (BOSS) is on the last position
+            gameLevel < EnemyType.values().lastIndex -> {
                 waveEnemyList.add(EnemyType.values()[gameLevel])
                 enemyCount = baseSpawnCount + gameLevel
                 spawnsPerMinute = baseSpawnsPerMinute
             }
             //Boss wave
-            gameLevel % (EnemyType.values().size - 1) == 0 -> {
+            gameLevel % EnemyType.values().lastIndex == 0 -> {
+                regWaveStartIndex = 0
+                regWaveEndIndex = regWaveIndexOffset
+                GameManager.addEnemy(Enemy(EnemyType.SKELETONKING, controller)) //spawn boss
                 EnemyType.values().forEachIndexed { i, type ->
-                    if (i in enemyIndexStart..enemyIndexEnd) {
+                    if (i in regWaveStartIndex..regWaveEndIndex) {
                         waveEnemyList.add(type)
                     }
                 }
-                GameManager.addEnemy(Enemy(EnemyType.SKELETONKING, controller))
                 enemyCount = baseSpawnCount + gameLevel
                 spawnsPerMinute = baseSpawnsPerMinute
 
-                if (enemyIndexEnd < (EnemyType.values().size - 2)) { //if enemyIndexEnd < 11
-                    enemyIndexStart += 4
-                    enemyIndexEnd += 4
-                } else {
-                    enemyIndexStart = 0
-                    enemyIndexEnd = 3
-                }
+                if(regWaveIndexOffset < 4) regWaveIndexOffset += 1
             }
+            //generate regular waves
+            else -> {
+                if(regWaveEndIndex < enemyTypesCount) {
+                    regWaveEndIndex += 1
+                } else {
+                    regWaveStartIndex = 0
+                    regWaveEndIndex = regWaveIndexOffset
+                }
+                EnemyType.values().forEachIndexed { i, type ->
+                    if (i in regWaveStartIndex..regWaveEndIndex) {
+                        waveEnemyList.add(type)
+                    }
+                }
+                regWaveStartIndex += 1
+
+                enemyCount = baseSpawnCount + gameLevel
+                spawnsPerMinute = baseSpawnsPerMinute
+            }/*
             //infinite waves. Enemies spawned in groups. No Boss
             gameLevel > EnemyType.values().size - 1 -> {
                 EnemyType.values().forEachIndexed { i, type ->
@@ -106,7 +116,7 @@ class WaveSpawner(val controller: GameController) {
                 }
                 enemyCount = baseSpawnCount * gameLevel
                 spawnsPerMinute = baseSpawnsPerMinute
-            }
+            }*/
         }
     }
 
@@ -118,8 +128,9 @@ class WaveSpawner(val controller: GameController) {
         Log.i("startingStrong", "$maxSpawnRPM")
         Log.i("spawnsPerMinute", "$spawnsPerMinute")
         Log.i("waveEnemyList", "$waveEnemyList")
-        Log.i("enemyIndexStart", "$enemyIndexStart")
-        Log.i("enemyIndexEnd", "$enemyIndexEnd")
+        Log.i("enemyIndexStart", "$regWaveStartIndex")
+        Log.i("enemyIndexEnd", "$regWaveEndIndex")
+        Log.i("enemyIndexOffset", "$regWaveIndexOffset")
     }
 }
 

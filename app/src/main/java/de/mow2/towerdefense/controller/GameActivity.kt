@@ -103,10 +103,20 @@ class GameActivity : AppCompatActivity(), GameController {
         if (intent.getBooleanExtra("loadGame", false)) {
             gameState.readGameState(playGround)
         }
+        //cheatGame()
         gameManager.initLevel(GameManager.gameLevel, true)
         //initial wave display
         waveDisplayText = "${this.getString(R.string.wave)} ${GameManager.gameLevel + 1}"
         waveDisplay.text = waveDisplayText
+    }
+
+    /**
+     * use this method right before initLevel to cheat progress
+     */
+    private fun cheatGame() {
+        GameManager.gameLevel = 44
+        GameManager.spawnRate = 130f
+        gameManager.increaseCoins(5000000)
     }
 
     /**
@@ -159,7 +169,7 @@ class GameActivity : AppCompatActivity(), GameController {
             val towerBtnText = TextView(this)
             towerBtnText.text = "${buildMenu.getTowerCost(type)}"
             towerBtnText.textAlignment = TextView.TEXT_ALIGNMENT_CENTER
-            towerBtnText.setTextColor(Color.YELLOW)
+            towerBtnText.setTextColor(Color.WHITE)
             towerBtn.id = i
             towerBtn.setOnClickListener {
                 selectedTool = buildButton.id

@@ -55,6 +55,7 @@ class Enemy(
 
     //game variables
     var healthPoints = 0
+    private var bonusHealth = if(GameManager.gameLevel < 13) 0 else GameManager.gameLevel //increases with each boss level for better gameplay balancing
     var baseDamage = 1
     var baseSpeed = 0f
     var isDead = false
@@ -82,69 +83,69 @@ class Enemy(
         when (type) {
             EnemyType.LEAFBUG -> {
                 baseSpeed = 0.03f
-                healthPoints = if (GameManager.gameLevel != 0) 5 * GameManager.gameLevel else 5
+                healthPoints = if (GameManager.gameLevel != 0) 5 * GameManager.gameLevel + bonusHealth else 5
                 coinValue = 10
             }
             EnemyType.FIREBUG -> {
                 baseSpeed = 0.02f
-                healthPoints = 7 * GameManager.gameLevel
+                healthPoints = 7 * GameManager.gameLevel + bonusHealth
                 coinValue = 15
             }
             EnemyType.MAGMACRAB -> {
                 baseSpeed = 0.02f
-                healthPoints = 8 * GameManager.gameLevel
+                healthPoints = 8 * GameManager.gameLevel + bonusHealth
                 coinValue = 25
             }
             EnemyType.SCORPION -> {
                 baseSpeed = 0.015f
-                healthPoints = 8 * GameManager.gameLevel
+                healthPoints = 8 * GameManager.gameLevel + bonusHealth
                 coinValue = 20
             }
             EnemyType.CLAMPBEETLE -> {
                 baseSpeed = 0.07f
-                healthPoints = 1 * GameManager.gameLevel + 1
+                healthPoints = 1 * GameManager.gameLevel + 1 + bonusHealth
                 coinValue = 20
             }
             EnemyType.FIREWASP -> {
                 baseSpeed = 0.08f
-                healthPoints = 1 * GameManager.gameLevel
+                healthPoints = 1 * GameManager.gameLevel + bonusHealth
                 coinValue = 20
             }
             EnemyType.LOCUST -> {
-                baseSpeed = 0.075f
-                healthPoints = 1 * GameManager.gameLevel
+                baseSpeed = 0.081f
+                healthPoints = 1 * GameManager.gameLevel + bonusHealth
                 coinValue = 20
             }
             EnemyType.VOIDBUTTERFLY -> {
-                baseSpeed = 0.075f
-                healthPoints = 1 * GameManager.gameLevel
+                baseSpeed = 0.082f
+                healthPoints = 1 * GameManager.gameLevel + bonusHealth
                 coinValue = 20
             }
             EnemyType.SKELETONGRUNT -> {
                 baseSpeed = 0.02f
-                healthPoints = 5 * GameManager.gameLevel
+                healthPoints = 5 * GameManager.gameLevel + bonusHealth
                 coinValue = 20
             }
             EnemyType.NECROMANCER -> {
                 baseSpeed = 0.02f
-                healthPoints = 6 * GameManager.gameLevel
+                healthPoints = 6 * GameManager.gameLevel + bonusHealth
                 coinValue = 25
             }
             EnemyType.SKELETONWARRIOR -> {
                 baseSpeed = 0.02f
-                healthPoints = 8 * GameManager.gameLevel
+                healthPoints = 8 * GameManager.gameLevel + bonusHealth
                 coinValue = 25
             }
             EnemyType.SKELETONKNIGHT -> {
                 baseSpeed = 0.02f
-                healthPoints = 9 * GameManager.gameLevel
+                healthPoints = 9 * GameManager.gameLevel + bonusHealth
                 coinValue = 25
             }
             EnemyType.SKELETONKING -> {
                 baseSpeed = 0.005f
-                healthPoints = 50 * GameManager.gameLevel
+                healthPoints = 60 * GameManager.gameLevel + bonusHealth * 2
                 baseDamage = GameManager.livesMax
-                coinValue = 50
+                coinValue = 100 + GameManager.gameLevel
             }
         }
         //set initial speed (needed to change its value later on)
